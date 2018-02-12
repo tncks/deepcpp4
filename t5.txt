@@ -1,0 +1,44 @@
+#include "stdafx.h"
+#include <iostream>
+
+using namespace std;
+
+template <typename T>
+void PrintData(const T &rData)
+{
+	cout << rData << endl << endl;
+}
+
+class CObject
+{
+	friend ostream &operator<<(ostream &rCout, const CObject &rObject);
+
+private:
+	int X, Y;
+	int Code;
+
+public:
+	CObject() : X(0), Y(0), Code(0) {}
+	CObject(int iX, int iY, int iCode) : X(iX), Y(iY), Code(iCode) {}
+	virtual ~CObject(){}
+		
+};
+
+ostream &operator<<(ostream &rCout, const CObject &rObject)
+{
+	cout << "ÁÂÇ¥ : (" << rObject.X << ", " << rObject.Y << ")" << endl;
+	cout << "¹øÈ£ : " << rObject.Code;
+	return rCout;
+}
+
+int main()
+{
+	CObject House(10, 20, 1);
+	PrintData(House);
+	PrintData('°¡');
+	PrintData(1000);
+	PrintData(26.72);
+
+	return 0;
+
+}

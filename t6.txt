@@ -1,0 +1,43 @@
+#include "stdafx.h"
+#include <iostream>
+
+using namespace std;
+
+template <typename T>
+void PrintData(const T &rData)
+{
+	cout << rData << endl << endl;
+}
+
+class CObject
+{
+	friend void PrintData<CObject>(const CObject &rData);
+
+private:
+	int X, Y;
+	int Code;
+
+public:
+	CObject() : X(0), Y(0), Code(0) {}
+	CObject(int iX, int iY, int iCode) : X(iX), Y(iY), Code(iCode) {}
+	virtual ~CObject(){}
+		
+};
+
+template <> void PrintData<CObject>(const CObject &rData)
+{
+	cout << "ÁÂÇ¥ : (" << rData.X << ", " << rData.Y << ")" << endl;
+	cout << "¹øÈ£ : (" << rData.Code << endl << endl;
+}
+
+int main()
+{
+	CObject House(10, 20, 1);
+	PrintData<CObject>(House);
+	PrintData<char>('A');
+	PrintData<int>(1000);
+	PrintData<double>(26.72);
+
+	return 0;
+
+}

@@ -1,0 +1,20 @@
+#include "stdafx.h"
+#include <iostream>
+
+using namespace std;
+
+template <class DataType>
+DataType Add(DataType Argument1, DataType Argument2);
+
+int main()
+{
+	printf("%c\n", Add('A', '2'));
+	printf("%d\n", Add(10, 20));
+	printf("%f\n", Add(10.2, 20.4));
+}
+
+template <class DataType>
+DataType Add(DataType Argument1, DataType Argument2)
+{
+	return Argument1 + Argument2;
+}
